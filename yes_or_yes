@@ -1,0 +1,40 @@
+import tkinter as tk
+import random
+
+def move_no_button():
+    # Move the 'No' button to a random position within the window
+    x = random.randint(0, root.winfo_width() - 80)  # Subtract button width to keep it inside
+    y = random.randint(0, root.winfo_height() - 50)  # Subtract button height to keep it inside
+    no_button.place(x=x, y=y)
+
+def on_yes_click():
+    result_label.config(text=" I knew you'd say yes ≧﹏≦  ♡")
+
+def on_no_click():
+    move_no_button()
+
+# Create the main window
+root = tk.Tk()
+root.title("Choose Wisely")
+
+# Configure window size and responsiveness
+root.geometry("700x600")
+root.minsize(700, 600)
+
+# Create and place the question label with wrap length
+question_label = tk.Label(root, text=" Varsha ! ,Can i ask you for a thigh crush when we meet : ( ?", font=("Helvetica", 16), wraplength=700, justify="center")
+question_label.pack(pady=20)
+
+# Create and place the Yes and No buttons
+yes_button = tk.Button(root, text="Yes", command=on_yes_click, font=("Helvetica", 14), bg="green", fg="white")
+yes_button.place(x=150, y=650)
+
+no_button = tk.Button(root, text="No", command=on_no_click, font=("Helvetica", 14), bg="red", fg="white")
+no_button.place(x=670, y=650)
+
+# Create and place the result label
+result_label = tk.Label(root, text="", font=("Helvetica", 14))
+result_label.pack(pady=20)
+
+# Start the main loop
+root.mainloop()
